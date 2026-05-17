@@ -5,21 +5,24 @@ import Settings from './pages/dashboard/Settings'
 import Users from './pages/dashboard/Users'
 import DashboardLayout from './layouts/DashboardLayout'
 import DashboardHome from './pages/dashboard/DashboardHome'
+import Login from './pages/auth/Login'
 
 function App() {
 
   return (
     <>
     <Routes>
-
-      <Route path="/" element={<Navigate to="/dashboard" />}/>
+ 
+      <Route path="/" element={<Login />} />
       
       <Route path="/dashboard" element={<DashboardLayout/>}>
 
       <Route index element={<DashboardHome/>} />
 
       <Route path="profile" element={<Profile/>} />
+      
       <Route path="settings" element={<Settings/>} />
+
       <Route path="users" element={<Users/>} />
 
       </Route>
