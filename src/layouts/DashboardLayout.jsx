@@ -1,8 +1,15 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
 import "./DashboardLayout.css";
 
-function DashboardLayout() {
+function DashboardLayout({setIsLoggedIn}) {
+const navigate = useNavigate();
+
+function handleLogout(){
+    setIsLoggedIn(false);
+    navigate("/");
+}
+
     return (
         <div className="dashboard-layout">
             <aside className="sidebar">
@@ -14,6 +21,8 @@ function DashboardLayout() {
                     <NavLink to="settings">Settings</NavLink>
 
                     <NavLink to="users">Users</NavLink>
+
+                    <button onClick={handleLogout}>Logout</button>
 
                 </nav>
             </aside>

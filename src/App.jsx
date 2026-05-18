@@ -21,8 +21,9 @@ const [isLoggedIn, setIsLoggedIn] = useState(false);
       
       <Route path="/dashboard" 
         element={
-          <ProtectedRoute>
-              <DashboardLayout/>
+          <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <DashboardLayout 
+                setIsLoggedIn={setIsLoggedIn}/>
           </ProtectedRoute>
         }>
 
