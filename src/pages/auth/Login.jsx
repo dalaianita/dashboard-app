@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Login({setIsLoggedIn}) {
   const navigate = useNavigate();
 
   function handleLogin() {
+    setIsLoggedIn(true);
     navigate("/dashboard");
   }
 
