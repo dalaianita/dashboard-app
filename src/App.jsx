@@ -6,6 +6,7 @@ import Users from './pages/dashboard/Users'
 import DashboardLayout from './layouts/DashboardLayout'
 import DashboardHome from './pages/dashboard/DashboardHome'
 import Login from './pages/auth/Login'
+import UserDetails from './pages/dashboard/UserDetails'
 
 function App() {
 
@@ -25,7 +26,10 @@ function App() {
 
       <Route path="users" element={<Users/>} />
 
+      <Route path="users/:id" element={<UserDetails /> }/>
+
       </Route>
+      
     </Routes>
     </>
   )
