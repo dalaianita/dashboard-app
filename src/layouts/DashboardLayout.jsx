@@ -2,36 +2,45 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
 import "./DashboardLayout.css";
 
-function DashboardLayout({setIsLoggedIn}) {
-const navigate = useNavigate();
+function DashboardLayout({ setIsLoggedIn }) {
+  const navigate = useNavigate();
 
-function handleLogout(){
+  function handleLogout() {
     setIsLoggedIn(false);
     navigate("/");
-}
+  }
 
-    return (
-        <div className="dashboard-layout">
-            <aside className="sidebar">
-                <nav className="sidebar-links">
-                    <NavLink to="/dashboard">Home</NavLink>
+  function handleBack() {
+    navigate(-1);
+  }
 
-                    <NavLink to="profile">Profile</NavLink>
+  function handleNext(){
+    navigate(1);
+  }
 
-                    <NavLink to="settings">Settings</NavLink>
+  return (
+    <div className="dashboard-layout">
+      <aside className="sidebar">
+        <nav className="sidebar-links">
+          <NavLink to="/dashboard">Home</NavLink>
 
-                    <NavLink to="users">Users</NavLink>
+          <NavLink to="profile">Profile</NavLink>
 
-                    <button onClick={handleLogout}>Logout</button>
+          <NavLink to="settings">Settings</NavLink>
 
-                </nav>
-            </aside>
+          <NavLink to="users">Users</NavLink>
 
-            <main className="dashboard-content">
-                <Outlet/>
-            </main>
-        </div>
-    )
+          <button onClick={handleLogout}>Logout</button>
+          <button onClick={handleBack}>Back</button>
+          <button onClick={handleNext}>Next</button>
+        </nav>
+      </aside>
+
+      <main className="dashboard-content">
+        <Outlet />
+      </main>
+    </div>
+  );
 }
 
 export default DashboardLayout;

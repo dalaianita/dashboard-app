@@ -5,8 +5,8 @@ function Login({setIsLoggedIn}) {
 
   function handleLogin() {
     setIsLoggedIn(true);
-    
-    navigate("/dashboard");
+
+    navigate("/dashboard", {replace: true});
   }
 
   return (

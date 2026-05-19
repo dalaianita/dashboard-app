@@ -9,6 +9,7 @@ import DashboardHome from './pages/dashboard/DashboardHome'
 import Login from './pages/auth/Login'
 import UserDetails from './pages/dashboard/UserDetails'
 import ProtectedRoute from './components/ProtectedRoute'
+import NotFound from './pages/NotFound'
 
 function App() {
 const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -38,6 +39,8 @@ const [isLoggedIn, setIsLoggedIn] = useState(false);
       <Route path="users/:id" element={<UserDetails /> }/>
 
       </Route>
+
+      <Route path="*" element={<NotFound />} />
 
     </Routes>
     </>
