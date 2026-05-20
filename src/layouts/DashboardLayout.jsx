@@ -1,9 +1,10 @@
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import "./DashboardLayout.css";
 
 function DashboardLayout({ setIsLoggedIn }) {
   const navigate = useNavigate();
+  const location = useLocation();
 
   function handleLogout() {
     setIsLoggedIn(false);
@@ -37,6 +38,8 @@ function DashboardLayout({ setIsLoggedIn }) {
       </aside>
 
       <main className="dashboard-content">
+                <h2>PathName: {location.pathname}</h2>
+
         <Outlet />
       </main>
     </div>
