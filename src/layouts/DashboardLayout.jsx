@@ -15,8 +15,12 @@ function DashboardLayout({ setIsLoggedIn }) {
     navigate(-1);
   }
 
-  function handleNext(){
+  function handleNext() {
     navigate(1);
+  }
+
+  function handleDoubleNext() {
+    navigate(2);
   }
 
   return (
@@ -34,11 +38,12 @@ function DashboardLayout({ setIsLoggedIn }) {
           <button onClick={handleLogout}>Logout</button>
           <button onClick={handleBack}>Back</button>
           <button onClick={handleNext}>Next</button>
+          <button onClick={handleDoubleNext}>Next to Next</button>
         </nav>
       </aside>
 
       <main className="dashboard-content">
-                <h2>PathName: {location.pathname}</h2>
+        <h2>PathName: {location.pathname}</h2>
 
         <Outlet />
       </main>
