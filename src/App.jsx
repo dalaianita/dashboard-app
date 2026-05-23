@@ -13,7 +13,18 @@ import NotFound from "./pages/NotFound";
 
 const Profile = lazy(() => import("./pages/dashboard/Profile"));
 const Settings = lazy(() => import("./pages/dashboard/Settings"));
-const Users = lazy(() => import("./pages/dashboard/Users"));
+// const Users = lazy(() => import("./pages/dashboard/Users"));
+const Users = lazy(() =>
+  new Promise((resolve) => {
+
+    setTimeout(() => {
+
+      resolve(import("./pages/dashboard/Users"));
+
+    }, 3000);// it will delay loading
+
+  })
+);
 const DashboardHome = lazy(() => import("./pages/dashboard/DashboardHome"));
 const UserDetails = lazy(() => import("./pages/dashboard/UserDetails"));
 
