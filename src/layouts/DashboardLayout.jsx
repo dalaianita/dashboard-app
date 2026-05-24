@@ -1,8 +1,10 @@
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import "./DashboardLayout.css";
+import { Suspense } from "react";
+import PageLoader from "../components/PageLoader";
 
-function DashboardLayout({ setIsLoggedIn }) {
+function DashboardLayout({ setIsLoggedIn }) {  
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -45,7 +47,9 @@ function DashboardLayout({ setIsLoggedIn }) {
       <main className="dashboard-content">
         <h2>PathName: {location.pathname}</h2>
 
-        <Outlet />
+        <Suspense fallback={<PageLoader/>}>
+          <Outlet />
+        </Suspense>
       </main>
     </div>
   );
