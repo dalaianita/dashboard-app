@@ -1,13 +1,17 @@
-import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import "./DashboardLayout.css";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import PageLoader from "../components/PageLoader";
+import Sidebar from "./Sidebar";
 
 function DashboardLayout({ setIsLoggedIn }) {  
   const navigate = useNavigate();
+  
   const location = useLocation();
 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  console.log("DashboardLayout Rendered");
   function handleLogout() {
     setIsLoggedIn(false);
     navigate("/");
@@ -25,34 +29,66 @@ function DashboardLayout({ setIsLoggedIn }) {
     navigate(2);
   }
 
-  return (
-    <div className="dashboard-layout">
-      <aside className="sidebar">
-        <nav className="sidebar-links">
-          <NavLink to="/dashboard">Home</NavLink>
+  function handleToggleSidebar (){
+      console.log("Sidebar toggled");
 
-          <NavLink to="profile">Profile</NavLink>
+    setIsSidebarOpen(!isSidebarOpen);
 
-          <NavLink to="settings">Settings</NavLink>
+    localStorage.setItem("sidebar", "closed")
+  }
 
-          <NavLink to="users">Users</NavLink>
+//   return (
+//     <div className="dashboard-layout">
+//         <button onClick={handleToggelSidebar}>
+//             Toggle Sidebar
+//         </button>
+//       {isSidebarOpen && <Sidebar />}
+
+//       <main className="dashboard-content">
+//         <h2>PathName: {location.pathname}</h2>
+
+//         <Suspense fallback={<PageLoader/>}>
+//           <Outlet />
+
+//           <button onClick={handleLogout}>Logout</button>
+//           <button onClick={handleBack}>Back</button>
+//           <button onClick={handleNext}>Next</button>
+//           <button onClick={handleDoubleNext}>Next to Next</button>
+//         </Suspense>
+//       </main>
+//     </div>
+//   );
+
+return (
+  <div className="dashboard-layout">
+
+    <header className="dashboard-header">
+      <button onClick={handleToggleSidebar}>
+        ☰
+      </button>
+    </header>
+
+    <div className="dashboard-body">
+
+      {isSidebarOpen && <Sidebar />}
+
+      <main className="dashboard-content">
+        <h2>PathName: {location.pathname}</h2>
+
+        <Suspense fallback={<PageLoader />}>
+          <Outlet />
 
           <button onClick={handleLogout}>Logout</button>
           <button onClick={handleBack}>Back</button>
           <button onClick={handleNext}>Next</button>
           <button onClick={handleDoubleNext}>Next to Next</button>
-        </nav>
-      </aside>
-
-      <main className="dashboard-content">
-        <h2>PathName: {location.pathname}</h2>
-
-        <Suspense fallback={<PageLoader/>}>
-          <Outlet />
         </Suspense>
+
       </main>
+
     </div>
-  );
+  </div>
+);
 }
 
 export default DashboardLayout;
