@@ -2,40 +2,41 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const navItems = [
-    {id:1 , label: 'Home', path: "/dashboard"},
-    {id:2 , label: 'Profile', path: "profile"},
-    {id:3 , label: 'Settings', path: "settings"},
-    {id:4 , label: 'Users', path: "users"},
+  { id: 1, label: "Home", path: "/dashboard" },
+  { id: 2, label: "Profile", path: "profile" },
+  { id: 3, label: "Settings", path: "settings" },
+  { id: 4, label: "Users", path: "users" },
 ];
 
-const [activeMenu, setActiveMenu] = useState('Home')
-
 function Sidebar() {
+  const [activeMenu, setActiveMenu] = useState("Home");
 
-    useEffect(() => {
-      console.log("Sidebar Mounted");
+  useEffect(() => {
+    console.log("Sidebar Mounted");
 
-      return () => {
-        console.log("Sidebar Unmounted");
-      };
-    });
+    return () => {
+      console.log("Sidebar Unmounted");
+    };
+  });
   return (
     <aside className="sidebar">
       <nav className="sidebar-links">
-
-        //using list and keys 
-
-        {navItems.map((item)=>(
-            <NavLink 
+        //using list and keys
+        {navItems.map((item) => (
+          <NavLink
             key={item.id}
             to={item.path}
-            className={activeMenu === item.label ? "sidebar-link active-link" : "sidebar-link"}
-            onClick={setActiveMenu(item.label)}
-            > {item.label} </NavLink>))}
-        
-        
-        {     
-        /* <NavLink to="/dashboard">Home</NavLink>
+            className={
+              activeMenu === item.label
+                ? "sidebar-link active-link"
+                : "sidebar-link"
+            }
+            onClick={() => setActiveMenu(item.label)}
+          >
+            {item.label}
+          </NavLink>
+        ))}
+        {/* <NavLink to="/dashboard">Home</NavLink>
 
         <NavLink to="profile">Profile</NavLink>
 
@@ -46,5 +47,5 @@ function Sidebar() {
     </aside>
   );
 }
- 
+
 export default Sidebar;
