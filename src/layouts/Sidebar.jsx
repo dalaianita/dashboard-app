@@ -1,14 +1,23 @@
 import { NavLink } from "react-router-dom";
-
+import { useEffect } from "react";
 
 const navItems = [
     {id:1 , label: 'Home', path: "/dashboard"},
     {id:2 , label: 'Profile', path: "profile"},
     {id:3 , label: 'Settings', path: "settings"},
     {id:4 , label: 'Users', path: "users"},
-]
+];
+
 
 function Sidebar() {
+
+    useEffect(() => {
+      console.log("Sidebar Mounted");
+
+      return () => {
+        console.log("Sidebar Unmounted");
+      };
+    });
   return (
     <aside className="sidebar">
       <nav className="sidebar-links">
@@ -16,7 +25,7 @@ function Sidebar() {
         //using list and keys 
 
         {navItems.map((item)=>(
-            <NavLink key={item.key}
+            <NavLink key={item.id}
             to={item.path}> {item.label} </NavLink>))}
         
         
@@ -32,5 +41,5 @@ function Sidebar() {
     </aside>
   );
 }
-
+ 
 export default Sidebar;
