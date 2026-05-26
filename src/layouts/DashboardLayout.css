@@ -77,3 +77,19 @@ button {
 
     transition: all 0.2s ease;
 }
+
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar-link {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  border-radius: 8px;
+
+  transition: 0.2s;
+}
+

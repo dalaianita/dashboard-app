@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const navItems = [
     {id:1 , label: 'Home', path: "/dashboard"},
@@ -8,6 +8,7 @@ const navItems = [
     {id:4 , label: 'Users', path: "users"},
 ];
 
+const [activeMenu, setActiveMenu] = useState('Home')
 
 function Sidebar() {
 
@@ -25,8 +26,12 @@ function Sidebar() {
         //using list and keys 
 
         {navItems.map((item)=>(
-            <NavLink key={item.id}
-            to={item.path}> {item.label} </NavLink>))}
+            <NavLink 
+            key={item.id}
+            to={item.path}
+            className={activeMenu === item.label ? "sidebar-link active-link" : "sidebar-link"}
+            onClick={setActiveMenu(item.label)}
+            > {item.label} </NavLink>))}
         
         
         {     
