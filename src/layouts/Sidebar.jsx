@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { memo } from "react";
 
 const navItems = [
   { id: 1, label: "Home", path: "/dashboard" },
@@ -8,7 +9,9 @@ const navItems = [
   { id: 4, label: "Users", path: "users" },
 ];
 
-function Sidebar() {
+const Sidebar = memo(function Sidebar() {
+    console.log("Sidebar rendered..");
+
   const [activeMenu, setActiveMenu] = useState("Home");
 
   useEffect(() => {
@@ -46,6 +49,6 @@ function Sidebar() {
       </nav>
     </aside>
   );
-}
+})
 
 export default Sidebar;
