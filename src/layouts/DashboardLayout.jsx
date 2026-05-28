@@ -4,6 +4,7 @@ import "./DashboardLayout.css";
 import { Suspense, useState } from "react";
 import PageLoader from "../components/PageLoader";
 import Sidebar from "./Sidebar";
+import { useCallback } from "react";
 
 function DashboardLayout({ setIsLoggedIn }) {  
   const navigate = useNavigate();
@@ -12,11 +13,10 @@ function DashboardLayout({ setIsLoggedIn }) {
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   console.log("DashboardLayout Rendered");
-  function handleLogout() {
+  const handleLogout=useCallback(()=>{
     setIsLoggedIn(false);
     navigate("/");
-  }
-
+  },[navigate,setIsLoggedIn]);
   function handleBack() {
     navigate(-1);
   }
@@ -36,6 +36,7 @@ function DashboardLayout({ setIsLoggedIn }) {
 
     localStorage.setItem("sidebar", "closed")
   }
+
 
 //   return (
 //     <div className="dashboard-layout">
