@@ -12,11 +12,14 @@ function DashboardLayout({ setIsLoggedIn }) {
   const location = useLocation();
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
   console.log("DashboardLayout Rendered");
-  const handleLogout=useCallback(()=>{
+
+  const handleLogout = useCallback(() => {
     setIsLoggedIn(false);
     navigate("/");
-  },[navigate,setIsLoggedIn]);
+  }, [navigate, setIsLoggedIn]);
+
   function handleBack() {
     navigate(-1);
   }
