@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { memo } from "react";
+import { useEffect, useState, memo } from "react";
 
 const navItems = [
   { id: 1, label: "Home", path: "/dashboard" },
@@ -20,11 +19,11 @@ const Sidebar = memo(function Sidebar() {
     return () => {
       console.log("Sidebar Unmounted");
     };
-  });
+  },[]);
   return (
     <aside className="sidebar">
       <nav className="sidebar-links">
-        //using list and keys
+        {/* using list and keys */}
         {navItems.map((item) => (
           <NavLink
             key={item.id}

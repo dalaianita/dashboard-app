@@ -12,7 +12,7 @@ function DashboardLayout({ setIsLoggedIn }) {
   const location = useLocation();
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-
+  const [count, setCount] = useState(0)  
   console.log("DashboardLayout Rendered");
 
   const handleLogout = useCallback(() => {
@@ -70,6 +70,7 @@ return (
       <button onClick={handleToggleSidebar}>
         ☰
       </button>
+      <button onClick={()=> setCount(count+1)}> Count: {count}</button>
     </header>
 
     <div className="dashboard-body">
