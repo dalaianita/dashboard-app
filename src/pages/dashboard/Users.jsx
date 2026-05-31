@@ -1,4 +1,5 @@
 import { Link, useSearchParams } from "react-router-dom";
+import SearchBox from "../../components/Searchbox";
 
 function Users() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -22,14 +23,22 @@ function Users() {
           </Link>
         </div>
       ))}
-      <input
+      {/* <input
         type="text"
         value={search}
         placeholder="Search User"
         onChange={(e) => {
           setSearchParams({ search: e.target.value });
         }}
-      />
+      /> */}
+
+      <SearchBox 
+        search={search}
+        onSearchChange={(e)=>{
+            setSearchParams({search: e.target.value})
+        }}
+        />
+
     </div>
   );
 }
