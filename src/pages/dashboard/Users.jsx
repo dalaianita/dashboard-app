@@ -1,6 +1,6 @@
 import { Link, useSearchParams } from "react-router-dom";
-import SearchBox from "../../components/Searchbox";
-
+import { useCallback } from "react";
+import SearchBox from "../../components/SearchBox";
 function Users() {
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get("search") || "";
@@ -10,15 +10,19 @@ function Users() {
     { id: 3, name: "Banita" },
   ];
 
+  const handleSearchChange = useCallback(
+    (e) => {
+      setSearchParams({ search: e.target.value });
+    },
+    [setSearchParams],
+  );
+
   return (
     <div>
       <h1>Users</h1>
       {users.map((user) => (
         <div key={user.id}>
-          <Link
-            to={`/dashboard/users/${user.id}`}
-            state={user}
-            >
+          <Link to={`/dashboard/users/${user.id}`} state={user}>
             {user.name}
           </Link>
         </div>
@@ -32,13 +36,7 @@ function Users() {
         }}
       /> */}
 
-      <SearchBox 
-        search={search}
-        onSearchChange={(e)=>{
-            setSearchParams({search: e.target.value})
-        }}
-        />
-
+      <SearchBox search={search} onSearchChange={handleSearchChange} />
     </div>
   );
 }
