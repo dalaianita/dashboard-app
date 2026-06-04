@@ -1,5 +1,5 @@
 import { Link, useSearchParams } from "react-router-dom";
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useEffect } from "react";
 import SearchBox from "../../components/SearchBox";
 
 const users = [
@@ -20,6 +20,11 @@ function Users() {
     );
   }, [search]);
 
+  useEffect(() => {
+    console.log("Users Page Loaded...");
+  }, []);
+
+  console.log("Users Rendered..")
   const handleSearchChange = useCallback(
     (e) => {
       setSearchParams({ search: e.target.value });
