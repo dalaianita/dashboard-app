@@ -24,7 +24,6 @@ function Users() {
     console.log("Users Page Loaded...");
   }, []);
 
-  console.log("Users Rendered..")
   const handleSearchChange = useCallback(
     (e) => {
       setSearchParams({ search: e.target.value });
