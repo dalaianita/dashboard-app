@@ -13,7 +13,6 @@ function DashboardLayout({ setIsLoggedIn }) {
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [count, setCount] = useState(0)  
-  console.log("DashboardLayout Rendered");
 
   const handleLogout = useCallback(() => {
     setIsLoggedIn(false);
