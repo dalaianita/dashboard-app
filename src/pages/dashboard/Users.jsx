@@ -1,7 +1,6 @@
 import { Link, useSearchParams } from "react-router-dom";
-import { useCallback, useMemo, useEffect } from "react";
+import { useCallback, useMemo, useEffect, useState } from "react";
 import SearchBox from "../../components/SearchBox";
-
 const users = [
   { id: 1, name: "Anita" },
   { id: 2, name: "Sangam" },
@@ -10,6 +9,7 @@ const users = [
 
 function Users() {
   const [searchParams, setSearchParams] = useSearchParams();
+
   const search = searchParams.get("search") || "";
 
   const filteredUsers = useMemo(() => {
@@ -22,6 +22,7 @@ function Users() {
 
   useEffect(() => {
     console.log("Users Page Loaded...");
+    document.title = "User Dashboard";
   }, []);
 
   const handleSearchChange = useCallback(
@@ -45,6 +46,7 @@ function Users() {
       {filteredUsers.map((user) => (
         <p key={user.id}>{user.name}</p>
       ))}
+
 
       {/* <input
         type="text"
