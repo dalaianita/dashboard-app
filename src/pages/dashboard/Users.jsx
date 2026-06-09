@@ -47,16 +47,6 @@ function Users() {
         <p key={user.id}>{user.name}</p>
       ))}
 
-
-      {/* <input
-        type="text"
-        value={search}
-        placeholder="Search User"
-        onChange={(e) => {
-          setSearchParams({ search: e.target.value });
-        }}
-      /> */}
-
       <SearchBox search={search} onSearchChange={handleSearchChange} />
     </div>
   );
