@@ -1,6 +1,7 @@
 import { Link, useSearchParams } from "react-router-dom";
 import { useCallback, useMemo, useEffect, useState } from "react";
 import SearchBox from "../../components/SearchBox";
+import CurrentTime from "../../components/CurrentTime";
 const users = [
   { id: 1, name: "Anita" },
   { id: 2, name: "Sangam" },
@@ -22,7 +23,8 @@ function Users() {
 
   useEffect(() => {
     console.log("Users Page Loaded...");
-    document.title = "User Dashboard";
+    document.title = "Users | Dashboard";
+    return document.title = "Dashboard App"
   }, []);
 
   const handleSearchChange = useCallback(
@@ -48,6 +50,8 @@ function Users() {
       ))}
 
       <SearchBox search={search} onSearchChange={handleSearchChange} />
+
+      <CurrentTime />
     </div>
   );
 }
