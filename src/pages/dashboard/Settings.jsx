@@ -1,6 +1,6 @@
 function Settings(){
     return(
-        <h1>Settings Page</h1>
+        <h1>Settings Page loading..</h1>
     )
 }
 
