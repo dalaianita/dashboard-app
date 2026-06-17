@@ -13,13 +13,7 @@ const Sidebar = memo(function Sidebar() {
 
   const [activeMenu, setActiveMenu] = useState("Home");
 
-  useEffect(() => {
-    console.log("Sidebar Mounted");
 
-    return () => {
-      console.log("Sidebar Unmounted");
-    };
-  },[]);
   return (
     <aside className="sidebar">
       <nav className="sidebar-links">
